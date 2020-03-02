@@ -19,11 +19,10 @@ const getChat = (id) => {
     dir = execSync(`tcd -v ${id} --format irc --client-id 137oh7nvyaimf0yntfsjakm6wsvcvx`,  
         {
             maxBuffer: 1024 * 1024 * 64,
-            cwd: __dirname + '/../../../assets/data'
+            cwd: __dirname + '/../assets/data'
         });
     // Even if error, it is still done, because this problem is unsolved.
-    fs.writeFileSync(`assets/data/${id}.done`,'True');
-    console.log(stdout);
+    fs.writeFileSync(`../assets/data/${id}.done`,'True');
 }
 
 const checkVideos = (code) => {
@@ -52,7 +51,7 @@ const scanVideos = (game) => {
 const scanGames = () => {
     let headers = { 'Client-ID': '137oh7nvyaimf0yntfsjakm6wsvcvx', 'Accept': 'application/vnd.twitchtv.v5+jso'};
     
-    axios.get('https://api.twitch.tv/kraken/games/top?limit=100', { headers: headers})
+    axios.get('https://api.twitch.tv/kraken/games/top?limit=20', { headers: headers})
     .then(function (response) {
         for (let i = 0; i < response.data.top.length; i++)
             scanVideos(response.data.top[i].game.name);
@@ -63,9 +62,11 @@ const scanGames = () => {
 }
 
 const scanVODs = () => {
-    scanGames();
+    //scanGames();
 
-    setInterval(scanVODs, 60 * 60 * 1000); // Repeat in 1 hour
+    scanVideos("League of Legends"); // Scan only League fo Legends
+
+    setInterval(scanVODs, 12 * 60 * 60 * 1000); // Repeat in 12 hour
 }
 
 module.exports = {scanVODs};
