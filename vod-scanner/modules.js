@@ -62,9 +62,9 @@ const scanGames = () => {
 }
 
 const scanVODs = () => {
-    //scanGames();
+    scanGames();
 
-    scanVideos("League of Legends"); // Scan only League fo Legends
+    //scanVideos("League of Legends"); // Scan only League fo Legends
 
     setInterval(scanVODs, 12 * 60 * 60 * 1000); // Repeat in 12 hour
 }
