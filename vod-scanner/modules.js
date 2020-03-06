@@ -62,8 +62,8 @@ const scanGames = () => {
 }
 
 const cleanFiles = () => {
-    // remove old logs files
-    dir = execSync(`find . -type f -mtime +5 -exec rm -f {} \\;`,  
+    // remove logs files older than 1 week
+    dir = execSync(`find . -type f -mtime +7 -exec rm -f {} \\;`,  
         {
             maxBuffer: 1024 * 1024 * 64,
             cwd: __dirname + '/../assets/data'
