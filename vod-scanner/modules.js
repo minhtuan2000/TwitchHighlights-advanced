@@ -63,11 +63,11 @@ const scanGames = () => {
 
 const cleanFiles = () => {
     // remove old logs files
-    dir = execSync('find . -type f -mtime +5 -exec rm -f {} \;',  
-    {
-        maxBuffer: 1024 * 1024 * 64,
-        cwd: __dirname + '/../assets/data'
-    });
+    dir = execSync(`find . -type f -mtime +5 -exec rm -f {} \\;`,  
+        {
+            maxBuffer: 1024 * 1024 * 64,
+            cwd: __dirname + '/../assets/data'
+        });
 }
 
 const scanVODs = () => {
