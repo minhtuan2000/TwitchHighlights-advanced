@@ -76,7 +76,7 @@ const scanVODs = () => {
 
     //scanVideos("League of Legends"); // Scan only League fo Legends
 
-    setInterval(scanVODs, 12 * 60 * 60 * 1000); // Repeat in 12 hour
+    setTimeout(scanVODs, 12 * 60 * 60 * 1000); // Repeat in 12 hour
 }
 
 module.exports = {scanVODs};
